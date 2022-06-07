@@ -1,0 +1,39 @@
+	--====================================
+	-- TAREA MAIT 2023 - SQL :
+	-- ==============================
+
+	-- 4. Mostrar el numero de Proyecto, numero de departamento, mombre, direccion y fecha de nacimiento de los empleados que dirigen departamentos que
+	-- administran proyectos localizados en Lima
+
+		SELECT 	D.NUMEROP, 
+				B.NUMEROD, 
+				A.NOMBRE, 
+				A.APELLIDOP, 
+				A.DIRECCION, 
+				A.FECHAN, 
+				A.DIRECCION 
+		FROM EMPLEADO A
+		INNER JOIN DEPARTAMENTO B ON (A.ND = B.NUMEROD)
+		INNER JOIN PROYECTO D ON (B.NUMEROD = D.NUMEROD)
+		WHERE D.LUGARP= 'LIMA';
+
+
+
+	-- 5. Mostrar los nombres de los empleados que tienen familiares con su mismo nombre y de su mismo sexo
+
+
+
+		SELECT  A.NSS ,A.NOMBRE , A.APELLIDOP FROM 
+		EMPLEADO A
+		INNER JOIN FAMILIAR F ON (A.NSS = F.NSSE)
+		WHERE A.NOMBRE = F.NOMBREFAM AND A.SEXO = F.SEXO;
+
+
+
+	-- 6. calcular el numero de empleados que trabajan en el departamento de investigacion.
+
+
+		SELECT 	COUNT(*) CANTIDAD_INVESTIGACION
+		FROM EMPLEADO A
+		INNER JOIN DEPARTAMENTO B ON (A.ND = B.NUMEROD)
+		WHERE B.NOMBRED= 'INVESTIGACION';
